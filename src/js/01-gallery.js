@@ -3,7 +3,7 @@
 import { galleryItems } from './gallery-items';
 // Change code below this line
 // Dodatkowy import stylów
-import 'simplelightbox/dist/simple-lightbox.min.css';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 
 console.log(galleryItems);
 
