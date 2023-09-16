@@ -1,5 +1,5 @@
 // Add imports above this lineimport
-import SimpleLightbox from 'simplelightbox';
+// import SimpleLightbox from 'simplelightbox';
 import { galleryItems } from './gallery-items';
 // Change code below this line
 // Dodatkowy import stylów
@@ -12,11 +12,11 @@ const markup = galleryItems.map((item) => `<li><a  class="gallery__item" href=${
 list.insertAdjacentHTML('beforeend', markup);
 console.log();
 
-const gallery = new SimpleLightbox('.gallery a', {
-  captions: true,
-  captionPosition: 'outside',
-  captionType: 'attr',
-  captionsData: 'alt',
-  captionDelay: 250,
-  showCounter: true,
-});
+// const gallery = new SimpleLightbox('.gallery a', {
+//   captions: true,
+//   captionPosition: 'outside',
+//   captionType: 'attr',
+//   captionsData: 'alt',
+//   captionDelay: 250,
+//   showCounter: true,
+// });
