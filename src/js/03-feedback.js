@@ -39,9 +39,10 @@ if (hasStorageItem("feedback-form-state") === true) {
 }
 
 textInput.addEventListener(
-  "input",
+  "change",
   _throttle((e) => {
     if (e.currentTarget != null) {
+      // const form = e.currentTarget;
       msg.email = e.currentTarget.value;
       localStorage.save("feedback-form-state", msg);
       console.log(msg.email);
@@ -50,7 +51,7 @@ textInput.addEventListener(
 );
 
 textAreaInput.addEventListener(
-  "input",
+  "change",
   _throttle((e) => {
     if (e.currentTarget != null) {
       msg.message = e.currentTarget.value;
