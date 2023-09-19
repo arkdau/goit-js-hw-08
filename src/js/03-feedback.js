@@ -38,8 +38,20 @@ if (hasStorageItem("feedback-form-state") === true) {
   textAreaInput.value = msg.message;
 }
 
+// textInput.addEventListener(
+//   "change",
+//   _throttle((e) => {
+//     if (e.currentTarget != null) {
+//       // const form = e.currentTarget;
+//       msg.email = e.currentTarget.value;
+//       localStorage.save("feedback-form-state", msg);
+//       console.log(msg.email);
+//     }
+//   }, 500),
+// );
+
 textInput.addEventListener(
-  "change",
+  "input",
   _throttle((e) => {
     if (e.currentTarget != null) {
       // const form = e.currentTarget;
@@ -50,8 +62,19 @@ textInput.addEventListener(
   }, 500),
 );
 
+// textAreaInput.addEventListener(
+//   "change",
+//   _throttle((e) => {
+//     if (e.currentTarget != null) {
+//       msg.message = e.currentTarget.value;
+//       localStorage.save("feedback-form-state", msg);
+//       console.log(msg.message);
+//     }
+//   }, 500),
+// );
+
 textAreaInput.addEventListener(
-  "change",
+  "input",
   _throttle((e) => {
     if (e.currentTarget != null) {
       msg.message = e.currentTarget.value;
@@ -66,9 +89,11 @@ msgForm.addEventListener("submit", (e) => {
   const form = e.currentTarget;
   msg.email = form.elements.email.value;
   msg.message = form.elements.message.value;
+  localStorage.save("feedback-form-state", msg);
+  console.log('localStorage: feedback-form-state = ', localStorage.load("feedback-form-state"));
   localStorage.remove("feedback-form-state");
   form.reset();
-  console.log("feedback-form-state = ", msg);
+  console.log('cache: feedback-form-state = ', msg);
 });
 
 console.log(msg);
