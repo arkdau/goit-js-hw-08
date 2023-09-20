@@ -38,49 +38,30 @@ if (hasStorageItem("feedback-form-state") === true) {
   textAreaInput.value = msg.message;
 }
 
-// textInput.addEventListener(
-//   "change",
-//   _throttle((e) => {
-//     if (e.currentTarget != null) {
-//       // const form = e.currentTarget;
-//       msg.email = e.currentTarget.value;
-//       localStorage.save("feedback-form-state", msg);
-//       console.log(msg.email);
-//     }
-//   }, 500),
-// );
+console.log('input: ', msgForm);
 
-textInput.addEventListener(
+msgForm[0].addEventListener(
   "input",
-  _throttle((e) => {
-    if (e.currentTarget != null) {
+  _throttle(() => {
+    // if (e.currentTarget != null) {
       // const form = e.currentTarget;
-      msg.email = e.currentTarget.value;
+      // msg.email = e.currentTarget.value;
+      msg.email = textInput.value;
       localStorage.save("feedback-form-state", msg);
       console.log(msg.email);
-    }
+    // }
   }, 500),
 );
 
-// textAreaInput.addEventListener(
-//   "change",
-//   _throttle((e) => {
-//     if (e.currentTarget != null) {
-//       msg.message = e.currentTarget.value;
-//       localStorage.save("feedback-form-state", msg);
-//       console.log(msg.message);
-//     }
-//   }, 500),
-// );
-
-textAreaInput.addEventListener(
+msgForm[1].addEventListener(
   "input",
-  _throttle((e) => {
-    if (e.currentTarget != null) {
-      msg.message = e.currentTarget.value;
+  _throttle(() => {
+    // if (e.currentTarget != null) {
+      // msg.message = e.currentTarget.value;
+      msg.message = textAreaInput.value;
       localStorage.save("feedback-form-state", msg);
       console.log(msg.message);
-    }
+    // }
   }, 500),
 );
 
@@ -90,10 +71,17 @@ msgForm.addEventListener("submit", (e) => {
   msg.email = form.elements.email.value;
   msg.message = form.elements.message.value;
   localStorage.save("feedback-form-state", msg);
-  console.log('localStorage: feedback-form-state = ', localStorage.load("feedback-form-state"));
-  localStorage.remove("feedback-form-state");
-  form.reset();
-  console.log('cache: feedback-form-state = ', msg);
+
+  if (msg.email === '') {
+    console.log('email - error ');
+  }else if (msg.message === '') {
+    console.log('message - error');
+  }else {
+    console.log('cache: feedback-form-state = ', msg);
+    console.log('localStorage: feedback-form-state = ', localStorage.load("feedback-form-state"));
+    localStorage.remove("feedback-form-state");
+    form.reset();
+  };
 });
 
 console.log(msg);
