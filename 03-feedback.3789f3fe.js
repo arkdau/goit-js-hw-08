@@ -1,4 +1,4 @@
-!function(){let e;var t="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},r={save:(e,t)=>{try{let r=JSON.stringify(t);localStorage.setItem(e,r)}catch(e){console.error("Set state error: ",e.message)}},load:e=>{try{let t=localStorage.getItem(e);return null===t?void 0:JSON.parse(t)}catch(e){console.error("Get state error: ",e.message)}},remove:e=>{try{localStorage.removeItem(e)}catch(e){console.error("Get state error: ",e.message)}}},o={},n="Expected a function",a=0/0,i=/^\s+|\s+$/g,l=/^[-+]0x[0-9a-f]+$/i,f=/^0b[01]+$/i,c=/^0o[0-7]+$/i,s=parseInt,u="object"==typeof t&&t&&t.Object===Object&&t,m="object"==typeof self&&self&&self.Object===Object&&self,d=u||m||Function("return this")(),g=Object.prototype.toString,v=Math.max,b=Math.min,p=function(){return d.Date.now()};/**
+!function(){let e;var t="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},o={save:(e,t)=>{try{let o=JSON.stringify(t);localStorage.setItem(e,o)}catch(e){console.error("Set state error: ",e.message)}},load:e=>{try{let t=localStorage.getItem(e);return null===t?void 0:JSON.parse(t)}catch(e){console.error("Get state error: ",e.message)}},remove:e=>{try{localStorage.removeItem(e)}catch(e){console.error("Get state error: ",e.message)}}},r={},a="Expected a function",n=0/0,i=/^\s+|\s+$/g,l=/^[-+]0x[0-9a-f]+$/i,s=/^0b[01]+$/i,f=/^0o[0-7]+$/i,c=parseInt,u="object"==typeof t&&t&&t.Object===Object&&t,m="object"==typeof self&&self&&self.Object===Object&&self,d=u||m||Function("return this")(),g=Object.prototype.toString,v=Math.max,b=Math.min,p=function(){return d.Date.now()};/**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
  * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
@@ -44,7 +44,7 @@
  *
  * _.toNumber('3.2');
  * // => 3.2
- */function T(e){if("number"==typeof e)return e;if("symbol"==typeof(t=e)||t&&"object"==typeof t&&"[object Symbol]"==g.call(t))return a;if(y(e)){var t,r="function"==typeof e.valueOf?e.valueOf():e;e=y(r)?r+"":r}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(i,"");var o=f.test(e);return o||c.test(e)?s(e.slice(2),o?2:8):l.test(e)?a:+e}o=/**
+ */function h(e){if("number"==typeof e)return e;if("symbol"==typeof(t=e)||t&&"object"==typeof t&&"[object Symbol]"==g.call(t))return n;if(y(e)){var t,o="function"==typeof e.valueOf?e.valueOf():e;e=y(o)?o+"":o}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(i,"");var r=s.test(e);return r||f.test(e)?c(e.slice(2),r?2:8):l.test(e)?n:+e}r=/**
  * Creates a throttled function that only invokes `func` at most once per
  * every `wait` milliseconds. The throttled function comes with a `cancel`
  * method to cancel delayed `func` invocations and a `flush` method to
@@ -87,7 +87,7 @@
  *
  * // Cancel the trailing throttled invocation.
  * jQuery(window).on('popstate', throttled.cancel);
- */function(e,t,r){var o=!0,a=!0;if("function"!=typeof e)throw TypeError(n);return y(r)&&(o="leading"in r?!!r.leading:o,a="trailing"in r?!!r.trailing:a),/**
+ */function(e,t,o){var r=!0,n=!0;if("function"!=typeof e)throw TypeError(a);return y(o)&&(r="leading"in o?!!o.leading:r,n="trailing"in o?!!o.trailing:n),/**
  * Creates a debounced function that delays invoking `func` until after `wait`
  * milliseconds have elapsed since the last time the debounced function was
  * invoked. The debounced function comes with a `cancel` method to cancel
@@ -140,37 +140,22 @@
  *
  * // Cancel the trailing debounced invocation.
  * jQuery(window).on('popstate', debounced.cancel);
- */function(e,t,r){var o,a,i,l,f,c,s=0,u=!1,m=!1,d=!0;if("function"!=typeof e)throw TypeError(n);function g(t){var r=o,n=a;return o=a=void 0,s=t,l=e.apply(n,r)}function h(e){var r=e-c,o=e-s;// Either this is the first call, activity has stopped and we're at the
+ */function(e,t,o){var r,n,i,l,s,f,c=0,u=!1,m=!1,d=!0;if("function"!=typeof e)throw TypeError(a);function g(t){var o=r,a=n;return r=n=void 0,c=t,l=e.apply(a,o)}function S(e){var o=e-f,r=e-c;// Either this is the first call, activity has stopped and we're at the
 // trailing edge, the system time has gone backwards and we're treating
 // it as the trailing edge, or we've hit the `maxWait` limit.
-return void 0===c||r>=t||r<0||m&&o>=i}function S(){var e,r,o,n=p();if(h(n))return k(n);// Restart the timer.
-f=setTimeout(S,(e=n-c,r=n-s,o=t-e,m?b(o,i-r):o))}function k(e){return(// Only invoke if we have `lastArgs` which means `func` has been
+return void 0===f||o>=t||o<0||m&&r>=i}function k(){var e,o,r,a=p();if(S(a))return j(a);// Restart the timer.
+s=setTimeout(k,(e=a-f,o=a-c,r=t-e,m?b(r,i-o):r))}function j(e){return(// Only invoke if we have `lastArgs` which means `func` has been
 // debounced at least once.
-(f=void 0,d&&o)?g(e):(o=a=void 0,l))}function j(){var e,r=p(),n=h(r);if(o=arguments,a=this,c=r,n){if(void 0===f)return(// Reset any `maxWait` timer.
-s=e=c,// Start the timer for the trailing edge.
-f=setTimeout(S,t),u?g(e):l);if(m)return(// Handle invocations in a tight loop.
-f=setTimeout(S,t),g(c))}return void 0===f&&(f=setTimeout(S,t)),l}return t=T(t)||0,y(r)&&(u=!!r.leading,i=(m="maxWait"in r)?v(T(r.maxWait)||0,t):i,d="trailing"in r?!!r.trailing:d),j.cancel=function(){void 0!==f&&clearTimeout(f),s=0,o=c=a=f=void 0},j.flush=function(){return void 0===f?l:k(p())},j}(e,t,{leading:o,maxWait:t,trailing:a})};let h=document.querySelector(".feedback-form input"),S=document.querySelector(".feedback-form textarea"),k=document.querySelector(".feedback-form"),j={email:"",message:""};!0==(void 0!=(e=r.load("feedback-form-state"))&&(j=e,!0))&&(h.value=j.email,S.value=j.message),// textInput.addEventListener(
-//   "change",
-//   _throttle((e) => {
-//     if (e.currentTarget != null) {
-//       // const form = e.currentTarget;
-//       msg.email = e.currentTarget.value;
-//       localStorage.save("feedback-form-state", msg);
-//       console.log(msg.email);
-//     }
-//   }, 500),
-// );
-h.addEventListener("input",o(e=>{null!=e.currentTarget&&(// const form = e.currentTarget;
-j.email=e.currentTarget.value,r.save("feedback-form-state",j),console.log(j.email))},500)),// textAreaInput.addEventListener(
-//   "change",
-//   _throttle((e) => {
-//     if (e.currentTarget != null) {
-//       msg.message = e.currentTarget.value;
-//       localStorage.save("feedback-form-state", msg);
-//       console.log(msg.message);
-//     }
-//   }, 500),
-// );
-S.addEventListener("input",o(e=>{null!=e.currentTarget&&(j.message=e.currentTarget.value,r.save("feedback-form-state",j),console.log(j.message))},500)),k.addEventListener("submit",e=>{e.preventDefault();let t=e.currentTarget;j.email=t.elements.email.value,j.message=t.elements.message.value,r.save("feedback-form-state",j),console.log("localStorage: feedback-form-state = ",r.load("feedback-form-state")),r.remove("feedback-form-state"),t.reset(),console.log("cache: feedback-form-state = ",j)}),console.log(j)}();//# sourceMappingURL=03-feedback.70931464.js.map
+(s=void 0,d&&r)?g(e):(r=n=void 0,l))}function T(){var e,o=p(),a=S(o);if(r=arguments,n=this,f=o,a){if(void 0===s)return(// Reset any `maxWait` timer.
+c=e=f,// Start the timer for the trailing edge.
+s=setTimeout(k,t),u?g(e):l);if(m)return(// Handle invocations in a tight loop.
+s=setTimeout(k,t),g(f))}return void 0===s&&(s=setTimeout(k,t)),l}return t=h(t)||0,y(o)&&(u=!!o.leading,i=(m="maxWait"in o)?v(h(o.maxWait)||0,t):i,d="trailing"in o?!!o.trailing:d),T.cancel=function(){void 0!==s&&clearTimeout(s),c=0,r=f=n=s=void 0},T.flush=function(){return void 0===s?l:j(p())},T}(e,t,{leading:r,maxWait:t,trailing:n})};let S=document.querySelector(".feedback-form input"),k=document.querySelector(".feedback-form textarea"),j=document.querySelector(".feedback-form"),T={email:"",message:""};!0==(void 0!=(e=o.load("feedback-form-state"))&&(T=e,!0))&&(S.value=T.email,k.value=T.message),console.log("input: ",j),j[0].addEventListener("input",r(()=>{// if (e.currentTarget != null) {
+// const form = e.currentTarget;
+// msg.email = e.currentTarget.value;
+T.email=S.value,o.save("feedback-form-state",T),console.log(T.email);// }
+},500)),j[1].addEventListener("input",r(()=>{// if (e.currentTarget != null) {
+// msg.message = e.currentTarget.value;
+T.message=k.value,o.save("feedback-form-state",T),console.log(T.message);// }
+},500)),j.addEventListener("submit",e=>{e.preventDefault();let t=e.currentTarget;T.email=t.elements.email.value,T.message=t.elements.message.value,o.save("feedback-form-state",T),""===T.email?console.log("email - error "):""===T.message?console.log("message - error"):(console.log("cache: feedback-form-state = ",T),console.log("localStorage: feedback-form-state = ",o.load("feedback-form-state")),o.remove("feedback-form-state"),t.reset())}),console.log(T)}();//# sourceMappingURL=03-feedback.3789f3fe.js.map
 
-//# sourceMappingURL=03-feedback.70931464.js.map
+//# sourceMappingURL=03-feedback.3789f3fe.js.map
